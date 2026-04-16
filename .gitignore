@@ -1,0 +1,34 @@
+# 模型文件
+models/ 
+bge-reranker-large/ 
+*.bin 
+*.safetensors 
+*.gguf 
+
+# 虚拟环境
+.venv/ 
+
+# 缓存目录
+__pycache__/ 
+backend/app/__pycache__/ 
+frontend/__pycache__/ 
+
+# 环境变量
+.env 
+
+# 向量数据库
+chroma_db/ 
+
+# 数据目录
+data/ 
+
+# 评估结果
+evaluations/evaluation_results.json 
+
+# IDE文件
+.vscode/
+.idea/
+
+# 操作系统文件
+.DS_Store
+Thumbs.db
