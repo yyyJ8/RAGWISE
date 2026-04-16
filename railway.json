@@ -1,0 +1,50 @@
+{
+  "$schema": "https://railway.app/railway.schema.json",
+  "build": {
+    "builder": "DOCKERFILE",
+    "dockerfilePath": "docker-compose.yml"
+  },
+  "deploy": {
+    "numReplicas": 1,
+    "sleepApplication": true,
+    "restartPolicyType": "ON_FAILURE",
+    "restartPolicyMaxRetries": 10
+  },
+  "env": {
+    "QWEN_API_KEY": "${QWEN_API_KEY}",
+    "QWEN_BASE_URL": "${QWEN_BASE_URL}",
+    "CHROMA_PERSIST_DIRECTORY": "./chroma_db",
+    "API_URL": "${API_URL}",
+    "API_KEY": "${API_KEY}",
+    "LANGCHAIN_TRACING_V2": "${LANGCHAIN_TRACING_V2}",
+    "LANGCHAIN_ENDPOINT": "${LANGCHAIN_ENDPOINT}",
+    "LANGCHAIN_API_KEY": "${LANGCHAIN_API_KEY}",
+    "LANGCHAIN_PROJECT": "${LANGCHAIN_PROJECT}"
+  },
+  "services": {
+    "backend": {
+      "build": {
+        "context": ".",
+        "dockerfile": "backend/Dockerfile"
+      },
+      "ports": [
+        {
+          "port": 8000,
+          "public": true
+        }
+      ]
+    },
+    "frontend": {
+      "build": {
+        "context": ".",
+        "dockerfile": "frontend/Dockerfile"
+      },
+      "ports": [
+        {
+          "port": 7860,
+          "public": true
+        }
+      ]
+    }
+  }
+}

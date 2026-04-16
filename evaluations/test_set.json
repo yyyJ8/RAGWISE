@@ -1,0 +1,184 @@
+{
+  "test_cases": [
+    {
+      "id": 1,
+      "question": "RAGWise系统的核心功能是什么？",
+      "ground_truth": "RAGWise系统的核心功能包括多格式文档加载、智能分块、向量检索、多路召回、重排优化、幻觉抑制和来源引用等。",
+      "context": "RAGWise是一个企业级智能文档知识库系统，支持PDF、Word、Markdown等多格式文档批量上传与智能解析，通过智能分块、Hybrid多路召回、Rerank重排和幻觉抑制全链路技术，实现对企业内部知识的精准、可靠提取，让用户一句自然语言就能快速得到带来源引用的准确答案。"
+    },
+    {
+      "id": 2,
+      "question": "RAGWise支持哪些文档格式？",
+      "ground_truth": "RAGWise支持PDF、Word、Markdown、TXT等格式的文档。",
+      "context": "DocumentLoader类支持的文件格式包括.pdf、.docx、.md、.txt等。"
+    },
+    {
+      "id": 3,
+      "question": "RAGWise使用什么向量库？",
+      "ground_truth": "RAGWise使用Chroma作为向量库，支持本地持久化存储。",
+      "context": "VectorStore类使用Chroma作为向量库，配置了持久化存储目录。"
+    },
+    {
+      "id": 4,
+      "question": "RAGWise的重排模型是什么？",
+      "ground_truth": "RAGWise使用BAAI/bge-reranker-large作为重排模型。",
+      "context": "Reranker类使用HuggingFaceCrossEncoder加载BAAI/bge-reranker-large模型进行文档重排。"
+    },
+    {
+      "id": 5,
+      "question": "RAGWise的API接口有哪些？",
+      "ground_truth": "RAGWise的API接口包括/upload（上传文档）、/query（查询知识库）、/chat（流式聊天）和/health（健康检查）。",
+      "context": "FastAPI应用定义了/upload、/query、/chat和/health四个API接口。"
+    },
+    {
+      "id": 6,
+      "question": "RAGWise使用什么LLM？",
+      "ground_truth": "RAGWise使用通义千问（Qwen）作为LLM。",
+      "context": "RAGWise使用通义千问作为LLM，支持Qwen-Max和Qwen-Turbo模型。"
+    },
+    {
+      "id": 7,
+      "question": "RAGWise的嵌入模型是什么？",
+      "ground_truth": "RAGWise使用text-embedding-v4（Qwen）作为嵌入模型。",
+      "context": "RAGWise使用text-embedding-v4（Qwen）作为嵌入模型，支持语义搜索。"
+    },
+    {
+      "id": 8,
+      "question": "RAGWise如何部署？",
+      "ground_truth": "RAGWise支持Docker容器化部署，包括FastAPI后端和Gradio前端。",
+      "context": "RAGWise支持Docker容器化部署，通过docker-compose.yml配置完整的服务。"
+    },
+    {
+      "id": 9,
+      "question": "RAGWise使用什么评估工具？",
+      "ground_truth": "RAGWise使用RAGAS和LangSmith进行量化评估。",
+      "context": "RAGWise使用RAGAS进行指标评估，使用LangSmith进行追踪和监控。"
+    },
+    {
+      "id": 10,
+      "question": "RAGWise的分块策略有哪些？",
+      "ground_truth": "RAGWise支持Recursive、Semantic和Character三种分块策略。",
+      "context": "DocumentSplitter类支持Recursive、Semantic和Character三种分块策略。"
+    },
+    {
+      "id": 11,
+      "question": "RAGWise的2026 Chunking最佳实践是什么？",
+      "ground_truth": "2026 Chunking最佳实践是使用512 tokens的chunk_size和50 tokens的chunk_overlap。",
+      "context": "RAGWise采用2026 Chunking最佳实践，配置为512 tokens的chunk_size和50 tokens的chunk_overlap。"
+    },
+    {
+      "id": 12,
+      "question": "RAGWise的多路召回包括哪些方法？",
+      "ground_truth": "RAGWise的多路召回包括向量检索和BM25检索。",
+      "context": "MultiRetriever类实现了向量检索和BM25检索的混合检索。"
+    },
+    {
+      "id": 13,
+      "question": "RAGWise的Query Expansion功能是什么？",
+      "ground_truth": "Query Expansion功能是通过LLM生成多个查询变体，提高检索覆盖率。",
+      "context": "MultiRetriever类实现了Query Expansion功能，通过LLM生成多个查询变体。"
+    },
+    {
+      "id": 14,
+      "question": "RAGWise的幻觉抑制机制是什么？",
+      "ground_truth": "RAGWise的幻觉抑制机制包括Self-Check/Fact-Verify机制和严格的提示词约束。",
+      "context": "RAGChain类实现了Self-Check/Fact-Verify机制，通过二次验证减少幻觉。"
+    },
+    {
+      "id": 15,
+      "question": "RAGWise的来源引用格式是什么？",
+      "ground_truth": "RAGWise的来源引用格式是[1][2]这样的上标形式。",
+      "context": "RAGWise在回答中使用[1][2]这样的上标形式进行来源引用。"
+    },
+    {
+      "id": 16,
+      "question": "RAGWise的API Key鉴权机制是什么？",
+      "ground_truth": "RAGWise使用API Key进行接口鉴权，确保API调用的安全性。",
+      "context": "FastAPI应用实现了基于API Key的鉴权机制，保护API接口安全。"
+    },
+    {
+      "id": 17,
+      "question": "RAGWise的流式输出功能是什么？",
+      "ground_truth": "RAGWise的流式输出功能允许实时返回生成的回答，提高用户体验。",
+      "context": "RAGWise实现了流式输出功能，通过StreamingResponse实时返回回答。"
+    },
+    {
+      "id": 18,
+      "question": "RAGWise的向量库持久化方式是什么？",
+      "ground_truth": "RAGWise的向量库使用本地持久化存储，确保数据不丢失。",
+      "context": "VectorStore类配置了持久化存储目录，确保向量库数据不丢失。"
+    },
+    {
+      "id": 19,
+      "question": "RAGWise的重排Top-K设置是多少？",
+      "ground_truth": "RAGWise的重排Top-K设置是3，确保返回最相关的3个文档。",
+      "context": "Reranker类的top_k参数设置为3，确保返回最相关的3个文档。"
+    },
+    {
+      "id": 20,
+      "question": "RAGWise的延迟优化目标是什么？",
+      "ground_truth": "RAGWise的延迟优化目标是检索和重排的总延迟<200ms。",
+      "context": "RAGWise通过优化检索和重排流程，目标是总延迟<200ms。"
+    },
+    {
+      "id": 21,
+      "question": "RAGWise的幻觉率目标是什么？",
+      "ground_truth": "RAGWise的幻觉率目标是<5%，确保回答的准确性。",
+      "context": "RAGWise通过Self-Check机制，目标是幻觉率<5%。"
+    },
+    {
+      "id": 22,
+      "question": "RAGWise的前端框架是什么？",
+      "ground_truth": "RAGWise的前端使用Gradio框架，提供友好的用户界面。",
+      "context": "RAGWise的前端使用Gradio框架，实现了文件上传、智能问答和聊天模式。"
+    },
+    {
+      "id": 23,
+      "question": "RAGWise的后端框架是什么？",
+      "ground_truth": "RAGWise的后端使用FastAPI框架，提供高性能的API接口。",
+      "context": "RAGWise的后端使用FastAPI框架，实现了异步API接口。"
+    },
+    {
+      "id": 24,
+      "question": "RAGWise支持批量上传多少个文档？",
+      "ground_truth": "RAGWise支持批量上传10个不同格式的文档。",
+      "context": "DocumentLoader类支持批量加载多个文档，测试验证了10个不同格式文档的上传。"
+    },
+    {
+      "id": 25,
+      "question": "RAGWise的文档解析功能包括什么？",
+      "ground_truth": "RAGWise的文档解析功能包括文本提取、元数据提取和PDF页码提取。",
+      "context": "DocumentLoader类实现了文本提取、元数据提取和PDF页码提取功能。"
+    },
+    {
+      "id": 26,
+      "question": "RAGWise的智能分块功能有什么优势？",
+      "ground_truth": "RAGWise的智能分块功能能够根据内容语义进行合理分块，提高检索精度。",
+      "context": "DocumentSplitter类实现了智能分块功能，根据内容语义进行合理分块。"
+    },
+    {
+      "id": 27,
+      "question": "RAGWise的多路召回有什么优势？",
+      "ground_truth": "RAGWise的多路召回结合了向量检索和BM25检索的优势，提高检索覆盖率和准确性。",
+      "context": "MultiRetriever类实现了多路召回，结合了向量检索和BM25检索的优势。"
+    },
+    {
+      "id": 28,
+      "question": "RAGWise的重排功能有什么作用？",
+      "ground_truth": "RAGWise的重排功能能够对检索结果进行重新排序，提高Top-K结果的相关性。",
+      "context": "Reranker类实现了重排功能，对检索结果进行重新排序，提高相关性。"
+    },
+    {
+      "id": 29,
+      "question": "RAGWise的Self-Check机制如何工作？",
+      "ground_truth": "RAGWise的Self-Check机制通过LLM对初步回答进行事实验证，确保回答的准确性。",
+      "context": "RAGChain类实现了Self-Check机制，通过LLM对初步回答进行事实验证。"
+    },
+    {
+      "id": 30,
+      "question": "RAGWise的整体架构是什么？",
+      "ground_truth": "RAGWise的整体架构包括前端（Gradio）、后端（FastAPI）、核心RAG逻辑和向量库（Chroma）。",
+      "context": "RAGWise的整体架构包括前端（Gradio）、后端（FastAPI）、核心RAG逻辑和向量库（Chroma）。"
+    }
+  ]
+}

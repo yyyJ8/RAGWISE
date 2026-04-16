@@ -1,0 +1,65 @@
+version: "3.8"
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: ragwise-backend
+    ports:
+      - 8000:8000
+    environment:
+      - MODEL_NAME=${MODEL_NAME}
+      - QWEN_API_KEY=${QWEN_API_KEY}
+      - QWEN_BASE_URL=${QWEN_BASE_URL}
+      - CHROMA_PERSIST_DIRECTORY=${CHROMA_PERSIST_DIRECTORY}
+      - API_KEY=${API_KEY}
+      - LANGCHAIN_TRACING_V2=${LANGCHAIN_TRACING_V2}
+      - LANGCHAIN_ENDPOINT=${LANGCHAIN_ENDPOINT}
+      - LANGCHAIN_API_KEY=${LANGCHAIN_API_KEY}
+      - LANGCHAIN_PROJECT=${LANGCHAIN_PROJECT}
+    volumes:
+      - ./chroma_db:/app/chroma_db
+    restart: unless-stopped
+    networks:
+      - ragwise-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+    deploy:
+      resources:
+        limits:
+          cpus: "1"
+          memory: "1G"
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    container_name: ragwise-frontend
+    ports:
+      - "7860:7860"
+    environment:
+      - API_URL=${API_URL}
+      - API_KEY=${API_KEY}
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - ragwise-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:7860/"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+    deploy:
+      resources:
+        limits:
+          cpus: "1"
+          memory: "512M"
+
+networks:
+  ragwise-network:
+    driver: bridge
