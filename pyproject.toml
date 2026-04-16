@@ -22,6 +22,9 @@ markdown = "^3.10.2"
 ragas = "^0.4.3"
 requests = "^2.33.1"
 rank-bm25 = "^0.2.2"
+langchain-experimental = "^0.4.1"
+langchain-chroma = "^1.1.0"
+dashscope = "^1.25.17"
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.4.0"

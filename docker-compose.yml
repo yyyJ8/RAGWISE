@@ -20,6 +20,7 @@ services:
       - LANGCHAIN_PROJECT=${LANGCHAIN_PROJECT}
     volumes:
       - ./chroma_db:/app/chroma_db
+      - ./bge-reranker-large:/app/bge-reranker-large
     restart: unless-stopped
     networks:
       - ragwise-network

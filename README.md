@@ -100,8 +100,7 @@ API_KEY=your_secret_key
 
 ```bash
 # 启动后端服务
-cd backend
-uvicorn app.main:app --reload
+uvicorn backend.app.main:app --reload
 
 # 启动前端服务
 cd frontend

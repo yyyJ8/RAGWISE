@@ -12,8 +12,14 @@ class Reranker:
     """
     def __init__(self):
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
+        local_model_path = "E:/myRoad/RAGWise/bge-reranker-large"
+        docker_model_path = "/app/bge-reranker-large"
+        if os.path.exists(docker_model_path):
+            model_path = docker_model_path
+        elif os.path.exists(local_model_path):
+            model_path = local_model_path
         self.reranker_model = HuggingFaceCrossEncoder(
-            model_name="E:/myRoad/RAGWise/bge-reranker-large"
+            model_name=model_path
         )
         self.rerank_cache = {}
         # 初始化一次 compressor，避免每次创建

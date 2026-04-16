@@ -23,6 +23,7 @@ RUN apt-get update && apt-get install -y \
 COPY pyproject.toml poetry.lock /app/
 COPY backend/ /app/backend/
 COPY rag/ /app/rag/
+COPY bge-reranker-large/ /app/bge-reranker-large/
 
 # 安装Poetry
 RUN curl -sSL https://install.python-poetry.org | python3 -
@@ -34,6 +35,8 @@ RUN poetry config virtualenvs.create false
 # 安装依赖
 RUN poetry install --no-root
 
+RUN pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126
+RUN pip install sentence-transformers
 # 暴露端口
 EXPOSE 8000
 
